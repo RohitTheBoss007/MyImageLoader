@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import java.io.File;
@@ -37,7 +38,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        img = findViewById(R.id.img);
+        //img = findViewById(R.id.img);
+        img=new ImageView(this);
+        img.setLayoutParams(new LinearLayout.LayoutParams(160,160));
+        img.setImageResource(R.mipmap.ic_launcher);
+        LinearLayout linearLayout=findViewById(R.id.container);
+        if(linearLayout!=null)
+        {
+            linearLayout.addView(img);
+        }
+
         load = findViewById(R.id.load);
         if(ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE)!=PackageManager.PERMISSION_GRANTED){
 
